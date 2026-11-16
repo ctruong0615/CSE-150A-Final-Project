@@ -4,5 +4,3 @@ __pycache__/
 .env
 data/raw/*
 data/processed/*
-outputs/
-.pytest_cache/
