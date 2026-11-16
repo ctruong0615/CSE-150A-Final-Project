@@ -1,0 +1,185 @@
+{
+  "source": "https://www.kaggle.com/datasets/fronkongames/steam-games-dataset",
+  "input_file": "games.csv",
+  "sha256": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad",
+  "settings": {
+    "min_reviews": 100,
+    "positive_threshold": 0.8,
+    "test_fraction": 0.2,
+    "seed": 42,
+    "as_of": "2026-11-15"
+  },
+  "column_mapping": {
+    "app_id": "AppID",
+    "name": "Name",
+    "price": "Price",
+    "release_date": "Release date",
+    "positive": "Positive",
+    "negative": "Negative",
+    "owners": "Estimated owners",
+    "peak_ccu": "Peak CCU",
+    "genres": "Genres",
+    "description": "About the game"
+  },
+  "header_repairs": [
+    "Split merged 'DiscountDLC count' into 'Discount' and 'DLC count'."
+  ],
+  "original_columns": [
+    "AppID",
+    "Name",
+    "Release date",
+    "Estimated owners",
+    "Peak CCU",
+    "Required age",
+    "Price",
+    "DiscountDLC count",
+    "About the game",
+    "Supported languages",
+    "Full audio languages",
+    "Reviews",
+    "Header image",
+    "Website",
+    "Support url",
+    "Support email",
+    "Windows",
+    "Mac",
+    "Linux",
+    "Metacritic score",
+    "Metacritic url",
+    "User score",
+    "Positive",
+    "Negative",
+    "Score rank",
+    "Achievements",
+    "Recommendations",
+    "Notes",
+    "Average playtime forever",
+    "Average playtime two weeks",
+    "Median playtime forever",
+    "Median playtime two weeks",
+    "Developers",
+    "Publishers",
+    "Categories",
+    "Genres",
+    "Tags",
+    "Screenshots",
+    "Movies"
+  ],
+  "effective_columns": [
+    "AppID",
+    "Name",
+    "Release date",
+    "Estimated owners",
+    "Peak CCU",
+    "Required age",
+    "Price",
+    "Discount",
+    "DLC count",
+    "About the game",
+    "Supported languages",
+    "Full audio languages",
+    "Reviews",
+    "Header image",
+    "Website",
+    "Support url",
+    "Support email",
+    "Windows",
+    "Mac",
+    "Linux",
+    "Metacritic score",
+    "Metacritic url",
+    "User score",
+    "Positive",
+    "Negative",
+    "Score rank",
+    "Achievements",
+    "Recommendations",
+    "Notes",
+    "Average playtime forever",
+    "Average playtime two weeks",
+    "Median playtime forever",
+    "Median playtime two weeks",
+    "Developers",
+    "Publishers",
+    "Categories",
+    "Genres",
+    "Tags",
+    "Screenshots",
+    "Movies"
+  ],
+  "states": {
+    "price_band": [
+      "free",
+      "under_10",
+      "10_to_30",
+      "30_plus"
+    ],
+    "release_era": [
+      "2010_or_earlier",
+      "2011_to_2015",
+      "2016_to_2020",
+      "2021_plus"
+    ],
+    "owners_band": [
+      "under_20k",
+      "20k_to_100k",
+      "100k_plus",
+      "unknown"
+    ],
+    "peak_ccu_band": [
+      "under_100",
+      "100_to_1000",
+      "1000_plus",
+      "unknown"
+    ],
+    "description_length": [
+      "under_100_words",
+      "100_to_300_words",
+      "300_plus_words",
+      "unknown"
+    ],
+    "is_indie": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "is_rpg": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "success": [
+      "no",
+      "yes"
+    ]
+  },
+  "audit": {
+    "input_rows": 125855,
+    "below_minimum_reviews": 103050,
+    "unreleased_as_of_snapshot": 1
+  },
+  "eligible_rows": 22804,
+  "train_rows": 18244,
+  "test_rows": 4560,
+  "class_counts": {
+    "all": {
+      "yes": 13137,
+      "no": 9667
+    },
+    "train": {
+      "yes": 10510,
+      "no": 7734
+    },
+    "test": {
+      "yes": 2627,
+      "no": 1933
+    }
+  },
+  "warnings": [
+    "Thresholds are provisional; review before final experiments.",
+    "Owners and CCU are post-release observations; results are associational.",
+    "Low-review games are excluded, so conclusions apply to the eligible population.",
+    "Missing optional variables use an explicit unknown state."
+  ],
+  "dataset_version": 59
+}

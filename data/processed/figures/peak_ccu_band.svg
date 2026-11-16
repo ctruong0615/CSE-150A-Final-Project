@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="218" viewBox="0 0 780 218">
+<rect width="100%" height="100%" fill="white"/>
+<text x="24" y="32" font-family="sans-serif" font-size="19">Eligible games: peak_ccu_band</text>
+<text x="24" y="80" font-family="sans-serif" font-size="13">under_100</text>
+<rect x="240" y="65" width="400" height="21" fill="#2563eb"/>
+<text x="650" y="80" font-family="sans-serif" font-size="13">20,902</text>
+<text x="24" y="112" font-family="sans-serif" font-size="13">100_to_1000</text>
+<rect x="240" y="97" width="27" height="21" fill="#2563eb"/>
+<text x="277" y="112" font-family="sans-serif" font-size="13">1,417</text>
+<text x="24" y="144" font-family="sans-serif" font-size="13">1000_plus</text>
+<rect x="240" y="129" width="9" height="21" fill="#2563eb"/>
+<text x="259" y="144" font-family="sans-serif" font-size="13">485</text>
+<text x="24" y="176" font-family="sans-serif" font-size="13">unknown</text>
+<rect x="240" y="161" width="0" height="21" fill="#2563eb"/>
+<text x="250" y="176" font-family="sans-serif" font-size="13">0</text>
+</svg>
