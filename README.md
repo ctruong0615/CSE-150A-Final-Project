@@ -7,6 +7,12 @@
 
 The source has 125,855 games: 103,050 were below the review minimum and one was released after the cutoff. Of the eligible games, 13,137 have `success=yes` and 9,667 have `success=no`.
 
-The inputs are price, release era, estimated owners, peak concurrent players, description length, and Indie/RPG genre flags. The target is `success`. No Bayesian network has been trained yet.
+The inputs are price, release era, estimated owners, peak concurrent players, description length, and Indie/RPG genre flags. The target is `success`. We haven't trained a  Bayesian network yet.
 
-To view the data, open [view_data.ipynb](view_data.ipynb) in Jupyter or VS Code and choose **Run All**. It downloads and prepares missing data, then displays sample rows. Use a Python 3.10+ kernel with pandas installed.
+Open [cleaned_games.csv](cleaned_games.csv) directly in Excel, or load it in a Jupyter notebook opened from the project folder (with pandas installed):
+
+```python
+import pandas as pd
+games = pd.read_csv("cleaned_games.csv")
+games.head()
+```
