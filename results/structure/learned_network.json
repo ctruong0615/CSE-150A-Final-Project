@@ -1,0 +1,132 @@
+{
+  "nodes": [
+    "release_era",
+    "is_indie",
+    "is_rpg",
+    "price_band",
+    "description_length",
+    "success",
+    "owners_band",
+    "peak_ccu_band"
+  ],
+  "states": {
+    "price_band": [
+      "free",
+      "under_10",
+      "10_to_30",
+      "30_plus"
+    ],
+    "release_era": [
+      "2010_or_earlier",
+      "2011_to_2015",
+      "2016_to_2020",
+      "2021_plus"
+    ],
+    "owners_band": [
+      "under_20k",
+      "20k_to_100k",
+      "100k_plus",
+      "unknown"
+    ],
+    "peak_ccu_band": [
+      "under_100",
+      "100_to_1000",
+      "1000_plus",
+      "unknown"
+    ],
+    "description_length": [
+      "under_100_words",
+      "100_to_300_words",
+      "300_plus_words",
+      "unknown"
+    ],
+    "is_indie": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "is_rpg": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "success": [
+      "no",
+      "yes"
+    ]
+  },
+  "edges": [
+    [
+      "is_indie",
+      "is_rpg"
+    ],
+    [
+      "is_indie",
+      "price_band"
+    ],
+    [
+      "owners_band",
+      "peak_ccu_band"
+    ],
+    [
+      "price_band",
+      "description_length"
+    ],
+    [
+      "price_band",
+      "owners_band"
+    ],
+    [
+      "price_band",
+      "peak_ccu_band"
+    ],
+    [
+      "release_era",
+      "is_indie"
+    ],
+    [
+      "release_era",
+      "is_rpg"
+    ],
+    [
+      "release_era",
+      "owners_band"
+    ],
+    [
+      "release_era",
+      "price_band"
+    ],
+    [
+      "release_era",
+      "success"
+    ]
+  ],
+  "parents": {
+    "release_era": [],
+    "is_indie": [
+      "release_era"
+    ],
+    "is_rpg": [
+      "release_era",
+      "is_indie"
+    ],
+    "price_band": [
+      "release_era",
+      "is_indie"
+    ],
+    "description_length": [
+      "price_band"
+    ],
+    "success": [
+      "release_era"
+    ],
+    "owners_band": [
+      "release_era",
+      "price_band"
+    ],
+    "peak_ccu_band": [
+      "price_band",
+      "owners_band"
+    ]
+  }
+}

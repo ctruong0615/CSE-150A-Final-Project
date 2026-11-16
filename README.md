@@ -7,7 +7,7 @@
 
 The source has 125,855 games: 103,050 were below the review minimum and one was released after the cutoff. Of the eligible games, 13,137 have `success=yes` and 9,667 have `success=no`.
 
-The inputs are price, release era, estimated owners, peak concurrent players, description length, and Indie/RPG genre flags. The target is `success`. We haven't trained a  Bayesian network yet.
+The inputs are price, release era, estimated owners, peak concurrent players, description length, and Indie/RPG genre flags. The target is `success`. The network structures are defined below. Learning their probability tables and running inference are separate parts of the project.
 
 Open [cleaned_games.csv](cleaned_games.csv) directly in Excel, or load it in a Jupyter notebook opened from the project folder (with pandas installed):
 
@@ -16,3 +16,13 @@ import pandas as pd
 games = pd.read_csv("cleaned_games.csv")
 games.head()
 ```
+
+## Bayesian network structure learning
+
+This part looks at how the game features are connected. The code starts with a network based on assumptions about relationships between features, such as price, genre, and game success. It then learns another network from the training data and compares the two.
+
+For the learned network, the variables are put in a fixed order. Each variable can have up to three parents, chosen from the variables before it. The code tries the possible parent groups and uses BIC to choose between them. BIC rewards a better fit to the data but also adds a penalty for larger probability tables.
+
+The learned network has 11 connections, compared with 14 in the manual network, and gets a better BIC score on the training data. The test data is kept separate. These results compare the network structures; they do not measure prediction accuracy or show that one feature causes another.
+
+The graphs, network diagrams, and comparison table are saved in `results/structure/`. The JSON files list the connections and parents for each variable so they can be used in the parameter-learning part.
