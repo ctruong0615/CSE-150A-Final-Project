@@ -29,6 +29,6 @@ The graphs, network diagrams, and comparison table are saved in `results/structu
 
 ## Parameter learning and exact inference
 
-- [parameter_learning.py](parameter_learning.py) fits conditional probability tables for the learned network using maximum likelihood on the training split. Unseen parent configurations use a uniform distribution.
+- [parameter_learning.py](parameter_learning.py) fits CPTs for the learned network using maximum likelihood on the training split. Unseen parent configurations use a uniform distribution.
 - [exact_inference.py](exact_inference.py) computes exact success probabilities by variable elimination. It scored 59.00% accuracy on 4,559 held-out games. One game's evidence had zero probability and was excluded.
 - For rejection sampling, likelihood weighting, and Gibbs sampling, load [trained_network.json](results/inference/trained_network.json) and use the evidence and exact posteriors in the `queries` array of [exact_results.json](results/inference/exact_results.json) for comparison.
