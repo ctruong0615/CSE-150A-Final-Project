@@ -1,0 +1,1008 @@
+{
+  "nodes": [
+    "release_era",
+    "is_indie",
+    "is_rpg",
+    "price_band",
+    "description_length",
+    "success",
+    "owners_band",
+    "peak_ccu_band"
+  ],
+  "states": {
+    "price_band": [
+      "free",
+      "under_10",
+      "10_to_30",
+      "30_plus"
+    ],
+    "release_era": [
+      "2010_or_earlier",
+      "2011_to_2015",
+      "2016_to_2020",
+      "2021_plus"
+    ],
+    "owners_band": [
+      "under_20k",
+      "20k_to_100k",
+      "100k_plus",
+      "unknown"
+    ],
+    "peak_ccu_band": [
+      "under_100",
+      "100_to_1000",
+      "1000_plus",
+      "unknown"
+    ],
+    "description_length": [
+      "under_100_words",
+      "100_to_300_words",
+      "300_plus_words",
+      "unknown"
+    ],
+    "is_indie": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "is_rpg": [
+      "no",
+      "yes",
+      "unknown"
+    ],
+    "success": [
+      "no",
+      "yes"
+    ]
+  },
+  "edges": [
+    [
+      "is_indie",
+      "is_rpg"
+    ],
+    [
+      "is_indie",
+      "price_band"
+    ],
+    [
+      "owners_band",
+      "peak_ccu_band"
+    ],
+    [
+      "price_band",
+      "description_length"
+    ],
+    [
+      "price_band",
+      "owners_band"
+    ],
+    [
+      "price_band",
+      "peak_ccu_band"
+    ],
+    [
+      "release_era",
+      "is_indie"
+    ],
+    [
+      "release_era",
+      "is_rpg"
+    ],
+    [
+      "release_era",
+      "owners_band"
+    ],
+    [
+      "release_era",
+      "price_band"
+    ],
+    [
+      "release_era",
+      "success"
+    ]
+  ],
+  "parents": {
+    "release_era": [],
+    "is_indie": [
+      "release_era"
+    ],
+    "is_rpg": [
+      "release_era",
+      "is_indie"
+    ],
+    "price_band": [
+      "release_era",
+      "is_indie"
+    ],
+    "description_length": [
+      "price_band"
+    ],
+    "success": [
+      "release_era"
+    ],
+    "owners_band": [
+      "release_era",
+      "price_band"
+    ],
+    "peak_ccu_band": [
+      "price_band",
+      "owners_band"
+    ]
+  },
+  "cpts": {
+    "release_era": [
+      {
+        "parent_values": [],
+        "count": 18244,
+        "probabilities": {
+          "2010_or_earlier": 0.032394211795658844,
+          "2011_to_2015": 0.1588467441350581,
+          "2016_to_2020": 0.42145362859022145,
+          "2021_plus": 0.3873054154790616
+        }
+      }
+    ],
+    "is_indie": [
+      {
+        "parent_values": [
+          "2010_or_earlier"
+        ],
+        "count": 591,
+        "probabilities": {
+          "no": 0.8037225042301185,
+          "yes": 0.1895093062605753,
+          "unknown": 0.00676818950930626
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015"
+        ],
+        "count": 2898,
+        "probabilities": {
+          "no": 0.3775017253278123,
+          "yes": 0.6204278812974465,
+          "unknown": 0.002070393374741201
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020"
+        ],
+        "count": 7689,
+        "probabilities": {
+          "no": 0.2883339836129536,
+          "yes": 0.7094550656782417,
+          "unknown": 0.002210950708804786
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus"
+        ],
+        "count": 7066,
+        "probabilities": {
+          "no": 0.32394565525049535,
+          "yes": 0.6718086611944523,
+          "unknown": 0.0042456835550523635
+        }
+      }
+    ],
+    "is_rpg": [
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "no"
+        ],
+        "count": 475,
+        "probabilities": {
+          "no": 0.8673684210526316,
+          "yes": 0.13263157894736843,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "yes"
+        ],
+        "count": 112,
+        "probabilities": {
+          "no": 0.8214285714285714,
+          "yes": 0.17857142857142858,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "unknown"
+        ],
+        "count": 4,
+        "probabilities": {
+          "no": 0.0,
+          "yes": 0.0,
+          "unknown": 1.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "no"
+        ],
+        "count": 1094,
+        "probabilities": {
+          "no": 0.8153564899451554,
+          "yes": 0.1846435100548446,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "yes"
+        ],
+        "count": 1798,
+        "probabilities": {
+          "no": 0.7886540600667408,
+          "yes": 0.21134593993325917,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "unknown"
+        ],
+        "count": 6,
+        "probabilities": {
+          "no": 0.0,
+          "yes": 0.0,
+          "unknown": 1.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "no"
+        ],
+        "count": 2217,
+        "probabilities": {
+          "no": 0.8128101037437979,
+          "yes": 0.18718989625620208,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "yes"
+        ],
+        "count": 5455,
+        "probabilities": {
+          "no": 0.7919340054995417,
+          "yes": 0.2080659945004583,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "unknown"
+        ],
+        "count": 17,
+        "probabilities": {
+          "no": 0.0,
+          "yes": 0.0,
+          "unknown": 1.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "no"
+        ],
+        "count": 2289,
+        "probabilities": {
+          "no": 0.7182175622542595,
+          "yes": 0.2817824377457405,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "yes"
+        ],
+        "count": 4747,
+        "probabilities": {
+          "no": 0.7000210659363809,
+          "yes": 0.29997893406361914,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "unknown"
+        ],
+        "count": 30,
+        "probabilities": {
+          "no": 0.0,
+          "yes": 0.0,
+          "unknown": 1.0
+        }
+      }
+    ],
+    "price_band": [
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "no"
+        ],
+        "count": 475,
+        "probabilities": {
+          "free": 0.07578947368421053,
+          "under_10": 0.8863157894736842,
+          "10_to_30": 0.037894736842105266,
+          "30_plus": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "yes"
+        ],
+        "count": 112,
+        "probabilities": {
+          "free": 0.09821428571428571,
+          "under_10": 0.8928571428571429,
+          "10_to_30": 0.008928571428571428,
+          "30_plus": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "unknown"
+        ],
+        "count": 4,
+        "probabilities": {
+          "free": 0.0,
+          "under_10": 0.5,
+          "10_to_30": 0.5,
+          "30_plus": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "no"
+        ],
+        "count": 1094,
+        "probabilities": {
+          "free": 0.13254113345521024,
+          "under_10": 0.7751371115173674,
+          "10_to_30": 0.08135283363802559,
+          "30_plus": 0.010968921389396709
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "yes"
+        ],
+        "count": 1798,
+        "probabilities": {
+          "free": 0.10845383759733036,
+          "under_10": 0.8314794215795328,
+          "10_to_30": 0.059510567296996664,
+          "30_plus": 0.0005561735261401557
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "unknown"
+        ],
+        "count": 6,
+        "probabilities": {
+          "free": 0.16666666666666666,
+          "under_10": 0.8333333333333334,
+          "10_to_30": 0.0,
+          "30_plus": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "no"
+        ],
+        "count": 2217,
+        "probabilities": {
+          "free": 0.22462787550744248,
+          "under_10": 0.6057735678845286,
+          "10_to_30": 0.14975191700496165,
+          "30_plus": 0.019846639603067207
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "yes"
+        ],
+        "count": 5455,
+        "probabilities": {
+          "free": 0.18735105407882677,
+          "under_10": 0.7263061411549038,
+          "10_to_30": 0.0846929422548121,
+          "30_plus": 0.0016498625114573786
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "unknown"
+        ],
+        "count": 17,
+        "probabilities": {
+          "free": 0.23529411764705882,
+          "under_10": 0.6470588235294118,
+          "10_to_30": 0.058823529411764705,
+          "30_plus": 0.058823529411764705
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "no"
+        ],
+        "count": 2289,
+        "probabilities": {
+          "free": 0.07295762341633902,
+          "under_10": 0.5364788117081695,
+          "10_to_30": 0.3490607252075142,
+          "30_plus": 0.041502839667977284
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "yes"
+        ],
+        "count": 4747,
+        "probabilities": {
+          "free": 0.07036022751211292,
+          "under_10": 0.7189804086791658,
+          "10_to_30": 0.205603539077312,
+          "30_plus": 0.005055824731409311
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "unknown"
+        ],
+        "count": 30,
+        "probabilities": {
+          "free": 0.06666666666666667,
+          "under_10": 0.9333333333333333,
+          "10_to_30": 0.0,
+          "30_plus": 0.0
+        }
+      }
+    ],
+    "description_length": [
+      {
+        "parent_values": [
+          "free"
+        ],
+        "count": 2415,
+        "probabilities": {
+          "under_100_words": 0.15900621118012423,
+          "100_to_300_words": 0.5830227743271221,
+          "300_plus_words": 0.25424430641821943,
+          "unknown": 0.0037267080745341614
+        }
+      },
+      {
+        "parent_values": [
+          "under_10"
+        ],
+        "count": 12856,
+        "probabilities": {
+          "under_100_words": 0.12484443061605476,
+          "100_to_300_words": 0.6050093341630367,
+          "300_plus_words": 0.268201617921593,
+          "unknown": 0.0019446172993154947
+        }
+      },
+      {
+        "parent_values": [
+          "10_to_30"
+        ],
+        "count": 2787,
+        "probabilities": {
+          "under_100_words": 0.05238607822030857,
+          "100_to_300_words": 0.4937208467886616,
+          "300_plus_words": 0.4485109436670255,
+          "unknown": 0.005382131324004306
+        }
+      },
+      {
+        "parent_values": [
+          "30_plus"
+        ],
+        "count": 186,
+        "probabilities": {
+          "under_100_words": 0.06451612903225806,
+          "100_to_300_words": 0.3870967741935484,
+          "300_plus_words": 0.543010752688172,
+          "unknown": 0.005376344086021506
+        }
+      }
+    ],
+    "success": [
+      {
+        "parent_values": [
+          "2010_or_earlier"
+        ],
+        "count": 591,
+        "probabilities": {
+          "no": 0.3840947546531303,
+          "yes": 0.6159052453468697
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015"
+        ],
+        "count": 2898,
+        "probabilities": {
+          "no": 0.5472739820565907,
+          "yes": 0.4527260179434092
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020"
+        ],
+        "count": 7689,
+        "probabilities": {
+          "no": 0.4528547275328391,
+          "yes": 0.5471452724671608
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus"
+        ],
+        "count": 7066,
+        "probabilities": {
+          "no": 0.34517407302575714,
+          "yes": 0.6548259269742428
+        }
+      }
+    ],
+    "owners_band": [
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "free"
+        ],
+        "count": 47,
+        "probabilities": {
+          "under_20k": 0.0,
+          "20k_to_100k": 0.2553191489361702,
+          "100k_plus": 0.7446808510638298,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "under_10"
+        ],
+        "count": 523,
+        "probabilities": {
+          "under_20k": 0.04397705544933078,
+          "20k_to_100k": 0.30975143403441685,
+          "100k_plus": 0.6462715105162524,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "10_to_30"
+        ],
+        "count": 21,
+        "probabilities": {
+          "under_20k": 0.0,
+          "20k_to_100k": 0.47619047619047616,
+          "100k_plus": 0.5238095238095238,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2010_or_earlier",
+          "30_plus"
+        ],
+        "count": 0,
+        "probabilities": {
+          "under_20k": 0.25,
+          "20k_to_100k": 0.25,
+          "100k_plus": 0.25,
+          "unknown": 0.25
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "free"
+        ],
+        "count": 341,
+        "probabilities": {
+          "under_20k": 0.05865102639296188,
+          "20k_to_100k": 0.21407624633431085,
+          "100k_plus": 0.7272727272727273,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "under_10"
+        ],
+        "count": 2348,
+        "probabilities": {
+          "under_20k": 0.08603066439522998,
+          "20k_to_100k": 0.4024701873935264,
+          "100k_plus": 0.5114991482112436,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "10_to_30"
+        ],
+        "count": 196,
+        "probabilities": {
+          "under_20k": 0.15306122448979592,
+          "20k_to_100k": 0.37755102040816324,
+          "100k_plus": 0.46938775510204084,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2011_to_2015",
+          "30_plus"
+        ],
+        "count": 13,
+        "probabilities": {
+          "under_20k": 0.46153846153846156,
+          "20k_to_100k": 0.3076923076923077,
+          "100k_plus": 0.23076923076923078,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "free"
+        ],
+        "count": 1524,
+        "probabilities": {
+          "under_20k": 0.1272965879265092,
+          "20k_to_100k": 0.4330708661417323,
+          "100k_plus": 0.43963254593175854,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "under_10"
+        ],
+        "count": 5316,
+        "probabilities": {
+          "under_20k": 0.24134687735139201,
+          "20k_to_100k": 0.4339729119638826,
+          "100k_plus": 0.32468021068472536,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "10_to_30"
+        ],
+        "count": 795,
+        "probabilities": {
+          "under_20k": 0.2968553459119497,
+          "20k_to_100k": 0.36855345911949683,
+          "100k_plus": 0.33459119496855344,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2016_to_2020",
+          "30_plus"
+        ],
+        "count": 54,
+        "probabilities": {
+          "under_20k": 0.2037037037037037,
+          "20k_to_100k": 0.3888888888888889,
+          "100k_plus": 0.4074074074074074,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "free"
+        ],
+        "count": 503,
+        "probabilities": {
+          "under_20k": 0.2524850894632207,
+          "20k_to_100k": 0.3518886679920477,
+          "100k_plus": 0.3956262425447316,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "under_10"
+        ],
+        "count": 4669,
+        "probabilities": {
+          "under_20k": 0.4095095309488113,
+          "20k_to_100k": 0.3675305204540587,
+          "100k_plus": 0.22295994859713,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "10_to_30"
+        ],
+        "count": 1775,
+        "probabilities": {
+          "under_20k": 0.3357746478873239,
+          "20k_to_100k": 0.31943661971830983,
+          "100k_plus": 0.3447887323943662,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "2021_plus",
+          "30_plus"
+        ],
+        "count": 119,
+        "probabilities": {
+          "under_20k": 0.33613445378151263,
+          "20k_to_100k": 0.16806722689075632,
+          "100k_plus": 0.4957983193277311,
+          "unknown": 0.0
+        }
+      }
+    ],
+    "peak_ccu_band": [
+      {
+        "parent_values": [
+          "free",
+          "under_20k"
+        ],
+        "count": 341,
+        "probabilities": {
+          "under_100": 0.9853372434017595,
+          "100_to_1000": 0.011730205278592375,
+          "1000_plus": 0.002932551319648094,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "free",
+          "20k_to_100k"
+        ],
+        "count": 922,
+        "probabilities": {
+          "under_100": 0.9967462039045553,
+          "100_to_1000": 0.0032537960954446853,
+          "1000_plus": 0.0,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "free",
+          "100k_plus"
+        ],
+        "count": 1152,
+        "probabilities": {
+          "under_100": 0.7829861111111112,
+          "100_to_1000": 0.1484375,
+          "1000_plus": 0.0685763888888889,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "free",
+          "unknown"
+        ],
+        "count": 0,
+        "probabilities": {
+          "under_100": 0.25,
+          "100_to_1000": 0.25,
+          "1000_plus": 0.25,
+          "unknown": 0.25
+        }
+      },
+      {
+        "parent_values": [
+          "under_10",
+          "under_20k"
+        ],
+        "count": 3420,
+        "probabilities": {
+          "under_100": 0.9953216374269006,
+          "100_to_1000": 0.004678362573099415,
+          "1000_plus": 0.0,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "under_10",
+          "20k_to_100k"
+        ],
+        "count": 5130,
+        "probabilities": {
+          "under_100": 0.9923976608187135,
+          "100_to_1000": 0.00682261208576998,
+          "1000_plus": 0.0007797270955165692,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "under_10",
+          "100k_plus"
+        ],
+        "count": 4306,
+        "probabilities": {
+          "under_100": 0.8527635856943799,
+          "100_to_1000": 0.11425917324663261,
+          "1000_plus": 0.03297724105898746,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "under_10",
+          "unknown"
+        ],
+        "count": 0,
+        "probabilities": {
+          "under_100": 0.25,
+          "100_to_1000": 0.25,
+          "1000_plus": 0.25,
+          "unknown": 0.25
+        }
+      },
+      {
+        "parent_values": [
+          "10_to_30",
+          "under_20k"
+        ],
+        "count": 862,
+        "probabilities": {
+          "under_100": 0.9895591647331786,
+          "100_to_1000": 0.010440835266821345,
+          "1000_plus": 0.0,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "10_to_30",
+          "20k_to_100k"
+        ],
+        "count": 944,
+        "probabilities": {
+          "under_100": 0.9523305084745762,
+          "100_to_1000": 0.0423728813559322,
+          "1000_plus": 0.005296610169491525,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "10_to_30",
+          "100k_plus"
+        ],
+        "count": 981,
+        "probabilities": {
+          "under_100": 0.5443425076452599,
+          "100_to_1000": 0.3312945973496432,
+          "1000_plus": 0.12436289500509684,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "10_to_30",
+          "unknown"
+        ],
+        "count": 0,
+        "probabilities": {
+          "under_100": 0.25,
+          "100_to_1000": 0.25,
+          "1000_plus": 0.25,
+          "unknown": 0.25
+        }
+      },
+      {
+        "parent_values": [
+          "30_plus",
+          "under_20k"
+        ],
+        "count": 57,
+        "probabilities": {
+          "under_100": 0.9473684210526315,
+          "100_to_1000": 0.05263157894736842,
+          "1000_plus": 0.0,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "30_plus",
+          "20k_to_100k"
+        ],
+        "count": 45,
+        "probabilities": {
+          "under_100": 0.8666666666666667,
+          "100_to_1000": 0.13333333333333333,
+          "1000_plus": 0.0,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "30_plus",
+          "100k_plus"
+        ],
+        "count": 84,
+        "probabilities": {
+          "under_100": 0.27380952380952384,
+          "100_to_1000": 0.2857142857142857,
+          "1000_plus": 0.44047619047619047,
+          "unknown": 0.0
+        }
+      },
+      {
+        "parent_values": [
+          "30_plus",
+          "unknown"
+        ],
+        "count": 0,
+        "probabilities": {
+          "under_100": 0.25,
+          "100_to_1000": 0.25,
+          "1000_plus": 0.25,
+          "unknown": 0.25
+        }
+      }
+    ]
+  }
+}

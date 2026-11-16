@@ -1,0 +1,57 @@
+{
+  "queries": [
+    {
+      "evidence": {},
+      "posterior": {
+        "no": 0.42392019294014477,
+        "yes": 0.5760798070598553
+      }
+    },
+    {
+      "evidence": {
+        "release_era": "2021_plus"
+      },
+      "posterior": {
+        "no": 0.3451740730257571,
+        "yes": 0.6548259269742428
+      }
+    },
+    {
+      "evidence": {
+        "release_era": "2021_plus",
+        "is_rpg": "yes"
+      },
+      "posterior": {
+        "no": 0.3451740730257572,
+        "yes": 0.6548259269742429
+      }
+    },
+    {
+      "evidence": {
+        "price_band": "10_to_30",
+        "is_rpg": "yes",
+        "is_indie": "yes"
+      },
+      "posterior": {
+        "no": 0.38143411120471826,
+        "yes": 0.6185658887952817
+      }
+    }
+  ],
+  "evaluation": {
+    "evidence_features": [
+      "release_era",
+      "price_band",
+      "description_length",
+      "is_indie",
+      "is_rpg"
+    ],
+    "held_out_games": 4560,
+    "scored_games": 4559,
+    "zero_probability_evidence": 1,
+    "accuracy": 0.5900416758060978,
+    "log_loss": 0.6713143909175362,
+    "baseline_accuracy": 0.5760035095415661,
+    "baseline_log_loss": 0.6815492180630939
+  }
+}
