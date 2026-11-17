@@ -32,3 +32,9 @@ The graphs, network diagrams, and comparison table are saved in `results/structu
 - [parameter_learning.py](parameter_learning.py) fits CPTs for the learned network using maximum likelihood on the training split. Unseen parent configurations use a uniform distribution.
 - [exact_inference.py](exact_inference.py) computes exact success probabilities by variable elimination. It scored 59.00% accuracy on 4,559 held-out games. One game's evidence had zero probability and was excluded.
 - For rejection sampling, likelihood weighting, and Gibbs sampling, load [trained_network.json](results/inference/trained_network.json) and use the evidence and exact posteriors in the `queries` array of [exact_results.json](results/inference/exact_results.json) for comparison.
+
+## Gibbs sampling
+
+- [gibbs_sampling.py](gibbs_sampling.py) estimates Bayesian network posteriors using random-scan Gibbs sampling. Evidence variables stay fixed; each update samples one non-evidence variable from its Markov blanket conditional.
+- [compare_gibbs.py](compare_gibbs.py) compares Gibbs estimates of `success` with exact inference on the same original MLE network and the four evidence scenarios listed in `exact_results.json`. It varies retained sample counts (1,000, 5,000, and 10,000), burn-in update counts (0, 1,000, and 5,000), and explicit random seeds (default: 42, 43, and 44). The JSON reports per-seed estimates, exact posteriors, approximation error, convergence checkpoints, and runtime.
+- [test_gibbs_sampling.py](test_gibbs_sampling.py) checks estimates against exact inference on a two-node network and the lecture example, checks repeatability with a fixed seed, and rejects invalid sample settings.
