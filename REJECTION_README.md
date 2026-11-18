@@ -50,10 +50,6 @@ Mean absolute error in P(success=yes), across seeds 42 through 51:
 
 For the last query, 10,000 attempts retained about 227 assignments on average. Lower acceptance leaves fewer useful observations and greater sampling variability. Mean absolute error fell from 0.10659 at 1,000 attempts to 0.02606 at 10,000 attempts. Individual runs need not improve monotonically. Plot error bars show one standard error across ten runs, not 95% confidence intervals. For a binary query, total variation distance equals the absolute error for either state.
 
-## Integration with Kai
-
-The default sample budgets and seeds match the current GitHub command-line settings in compare_gibbs.py. The unchanged local copy of Kai's script is an older supporting snapshot with three default seeds; this task did not rerun Gibbs. Both implementations report posterior dictionaries, state-wise absolute errors, total variation, runtime, and per-seed results. Rejection adds acceptance counts/rates. Compare runtimes and errors, not just equal numerical sample budgets: Kai's code uses random-scan single-variable Gibbs updates (not full sweeps), and its burn-in and thinning also cost computation. Do not relabel her steps as sweeps. No Gibbs comparison was rerun or changed here.
-
 ## Scope and learning
 
 Likelihood weighting is not implemented in this package. Model CPTs were not changed or smoothed. These experiments evaluate agreement with the model's exact posterior, not held-out game classification accuracy.
