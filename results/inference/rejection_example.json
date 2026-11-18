@@ -1,0 +1,17 @@
+{
+  "posterior": {
+    "no": 0.3876651982378855,
+    "yes": 0.6123348017621145
+  },
+  "counts": {
+    "no": 88,
+    "yes": 139
+  },
+  "samples": 10000,
+  "attempted_samples": 10000,
+  "accepted_samples": 227,
+  "rejected_samples": 9773,
+  "acceptance_rate": 0.0227,
+  "seed": 42,
+  "status": "ok"
+}
