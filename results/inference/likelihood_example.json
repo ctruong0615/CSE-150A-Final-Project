@@ -1,0 +1,14 @@
+{
+  "posterior": {
+    "no": 0.37414666564076154,
+    "yes": 0.6258533343592384
+  },
+  "samples": 10000,
+  "positive_weight_samples": 10000,
+  "zero_weight_samples": 0,
+  "effective_sample_size": 6869.656958548635,
+  "effective_sample_fraction": 0.6869656958548634,
+  "log_total_weight": 5.414221833048542,
+  "seed": 42,
+  "status": "ok"
+}
