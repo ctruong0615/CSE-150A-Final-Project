@@ -86,7 +86,7 @@ def main():
     parser.add_argument("--sample-sizes", type=int, nargs="+", default=[1_000, 5_000, 10_000])
     parser.add_argument("--burn-in-periods", type=int, nargs="+", default=[0, 1_000, 5_000])
     parser.add_argument("--thinning", type=int, default=1)
-    parser.add_argument("--seeds", type=int, nargs="+", default=[42, 43, 44],
+    parser.add_argument("--seeds", type=int, nargs="+", default=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
                         help="Explicit random seeds to run for every experiment condition")
     parser.add_argument("--output", type=Path, default=Path("gibbs_comparison.json"))
     args = parser.parse_args()
