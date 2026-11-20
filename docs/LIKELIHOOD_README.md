@@ -2,22 +2,22 @@
 
 ## Files and dependencies
 
-- likelihood_weighting.py: weighted posterior estimates, effective sample size (ESS), and zero-weight diagnostics.
-- compare_likelihood.py: exact comparisons for the four existing queries, budgets 1,000/5,000/10,000, and seeds 42-51 (120 runs).
-- test_likelihood_weighting.py: nine tests including analytic Bayes calculations, lecture network, zero weights, underflow, and repeatability.
-- plot_likelihood.py: compare saved rejection and likelihood-weighting errors.
+- `bayesnet/likelihood_weighting.py`: weighted posterior estimates, effective sample size (ESS), and zero-weight diagnostics.
+- `experiments/compare_likelihood.py`: exact comparisons for the four existing queries, budgets 1,000/5,000/10,000, and seeds 42-51 (120 runs).
+- `tests/test_likelihood_weighting.py`: nine tests including analytic Bayes calculations, lecture network, zero weights, underflow, and repeatability.
+- `experiments/plot_likelihood.py`: compare saved rejection and likelihood-weighting errors.
 - results/inference/likelihood_*: JSON, CSV, plot, and one CLI example.
 
-The sampler reuses prepare() from rejection_sampling.py for validation and topological ordering. Tests use network fixtures from test_gibbs_sampling.py. The comparison imports exact_inference.py, which imports parameter_learning.py. All are already in the project. Core code uses the standard library; plotting additionally requires matplotlib. No dataset reload or retraining is necessary.
+The sampler reuses prepare() from `bayesnet/rejection_sampling.py` for validation and topological ordering. Tests use network fixtures from `tests/test_gibbs_sampling.py`. The comparison imports `bayesnet/exact_inference.py`, which imports `bayesnet/parameter_learning.py`. All are already in the project. Core code uses the standard library; plotting additionally requires matplotlib. No dataset reload or retraining is necessary.
 
-## Commands (from repository root or this runnable folder)
+## Commands (run from the repository root)
 
 ```bash
-python3 -m unittest test_likelihood_weighting -v
-python3 likelihood_weighting.py results/inference/trained_network.json --samples 10000 --seed 42
-python3 likelihood_weighting.py results/inference/trained_network.json --evidence '{"price_band":"10_to_30","is_rpg":"yes","is_indie":"yes"}' --samples 10000 --seed 42
-python3 compare_likelihood.py results/inference/trained_network.json
-python3 plot_likelihood.py
+python3 -m unittest tests.test_likelihood_weighting -v
+python3 -m bayesnet.likelihood_weighting results/inference/trained_network.json --samples 10000 --seed 42
+python3 -m bayesnet.likelihood_weighting results/inference/trained_network.json --evidence '{"price_band":"10_to_30","is_rpg":"yes","is_indie":"yes"}' --samples 10000 --seed 42
+python3 -m experiments.compare_likelihood results/inference/trained_network.json
+python3 -m experiments.plot_likelihood
 ```
 
 Both comparison defaults use ten seeds. The plot uses the previously saved rejection results. The underlying model and exact-reference JSON are unchanged.

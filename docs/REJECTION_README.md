@@ -2,24 +2,24 @@
 
 This document describes the rejection-sampling implementation and its saved ten-seed experiments.
 
-## New files to add to your repository
+## Project files
 
-- rejection_sampling.py: prior sampling followed by evidence rejection; compatible sample(...) interface and JSON model with Kai's implementation.
-- test_rejection_sampling.py: eight tests, including analytic Bayes calculation, lecture network, invalid CPTs, reproducibility, impossible evidence, and unsorted nodes.
-- compare_rejection.py: four existing exact queries x three sample budgets x ten seeds; JSON summaries and a CSV of individual runs.
-- plot_rejection.py: plot saved comparison results (requires matplotlib).
+- `bayesnet/rejection_sampling.py`: prior sampling followed by evidence rejection; compatible sample(...) interface and JSON model with Kai's implementation.
+- `tests/test_rejection_sampling.py`: eight tests, including analytic Bayes calculation, lecture network, invalid CPTs, reproducibility, impossible evidence, and unsorted nodes.
+- `experiments/compare_rejection.py`: four existing exact queries x three sample budgets x ten seeds; JSON summaries and a CSV of individual runs.
+- `experiments/plot_rejection.py`: plot saved comparison results (requires matplotlib).
 - results/inference/rejection_*: generated experiment results, one CLI example, and comparison plot.
 
-The implementation was developed and tested against supporting files and the trained network/exact results from ctruong0615's project (repository owner: ctruong0615), commit 223838a2f33b60b7c4f5a952854968c5a31b4f79. Kai's Gibbs files were inspected for interface/settings compatibility; her code was not modified. test_rejection_sampling.py imports the small network fixtures from her existing test_gibbs_sampling.py. Keep that file available when running tests.
+The implementation was developed and tested against supporting files and the trained network/exact results from ctruong0615's project (repository owner: ctruong0615), commit 223838a2f33b60b7c4f5a952854968c5a31b4f79. Kai's Gibbs files were inspected for interface/settings compatibility; her code was not modified. `tests/test_rejection_sampling.py` imports the small network fixtures from her existing `tests/test_gibbs_sampling.py`. Keep that file available when running tests.
 
-## Run from this folder or the repository root after copying the new files
+## Run these commands from the repository root
 
 ```bash
-python3 -m unittest test_rejection_sampling -v
-python3 rejection_sampling.py results/inference/trained_network.json --samples 10000 --seed 42
-python3 rejection_sampling.py results/inference/trained_network.json --evidence '{"price_band":"10_to_30","is_rpg":"yes","is_indie":"yes"}' --samples 10000 --seed 42
-python3 compare_rejection.py results/inference/trained_network.json
-python3 plot_rejection.py
+python3 -m unittest tests.test_rejection_sampling -v
+python3 -m bayesnet.rejection_sampling results/inference/trained_network.json --samples 10000 --seed 42
+python3 -m bayesnet.rejection_sampling results/inference/trained_network.json --evidence '{"price_band":"10_to_30","is_rpg":"yes","is_indie":"yes"}' --samples 10000 --seed 42
+python3 -m experiments.compare_rejection results/inference/trained_network.json
+python3 -m experiments.plot_rejection
 ```
 
 The sampler, comparison script, and tests use only Python's standard library. Only plotting requires matplotlib. No cleaned CSV or retraining is needed for these commands. Both the command-line and Python function defaults use ten seeds, 42 through 51. Override them with `--seeds` if needed.

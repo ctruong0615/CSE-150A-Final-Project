@@ -1,4 +1,4 @@
-"""Compare rejection sampling with exact inference using Kai's experiment settings."""
+"""Compare likelihood weighting with exact inference using Kai's experiment settings."""
 import argparse
 import csv
 import json
@@ -7,8 +7,8 @@ import statistics
 import time
 from pathlib import Path
 
-from exact_inference import posterior as exact_posterior
-from rejection_sampling import sample
+from bayesnet.exact_inference import posterior as exact_posterior
+from bayesnet.likelihood_weighting import sample
 
 
 def compare(model, queries, sample_sizes=(1000, 5000, 10000), seeds=tuple(range(42, 52))):
@@ -46,12 +46,12 @@ def compare(model, queries, sample_sizes=(1000, 5000, 10000), seeds=tuple(range(
                 'mean_total_variation_distance': statistics.mean(tvs) if valid else None,
                 'tv_standard_error': statistics.stdev(tvs) / math.sqrt(len(tvs)) if len(tvs) > 1 else None,
                 'mean_runtime_seconds': statistics.mean(r['runtime_seconds'] for r in runs),
-                'mean_accepted_samples': statistics.mean(r['accepted_samples'] for r in runs),
-                'mean_acceptance_rate': statistics.mean(r['acceptance_rate'] for r in runs),
+                'mean_effective_sample_size': statistics.mean(r['effective_sample_size'] for r in runs),
+                'mean_effective_sample_fraction': statistics.mean(r['effective_sample_fraction'] for r in runs),
                 'runs': runs,
             })
-    return {'query': 'success', 'method': 'rejection sampling',
-            'sample_budget_definition': 'attempted complete prior assignments',
+    return {'query': 'success', 'method': 'likelihood weighting',
+            'sample_budget_definition': 'weighted complete assignments with fixed evidence',
             'seeds': list(seeds), 'results': results}
 
 
@@ -60,18 +60,18 @@ def write_csv(path, result):
     for condition in result['results']:
         for run in condition['runs']:
             rows.append({
-                'method': 'rejection', 'evidence': json.dumps(condition['evidence'], sort_keys=True),
+                'method': 'likelihood_weighting', 'evidence': json.dumps(condition['evidence'], sort_keys=True),
                 'sample_count': condition['sample_count'], 'seed': run['seed'],
                 'exact_success_probability': condition['exact_posterior']['yes'],
                 'estimated_success_probability': run['posterior']['yes'] if run['posterior'] else None,
                 'absolute_error': run['absolute_error']['yes'] if run['absolute_error'] else None,
                 'runtime_seconds': run['runtime_seconds'],
-                'accepted_samples': run['accepted_samples'],
-                'acceptance_rate': run['acceptance_rate'], 'status': run['status'],
+                'effective_sample_size': run['effective_sample_size'],
+                'effective_sample_fraction': run['effective_sample_fraction'], 'zero_weight_samples': run['zero_weight_samples'], 'status': run['status'],
             })
     if rows:
         with path.open('w', newline='', encoding='utf-8') as stream:
-            writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+            writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
 
@@ -82,7 +82,7 @@ def main():
     parser.add_argument('--reference', type=Path, default=Path('results/inference/exact_results.json'))
     parser.add_argument('--sample-sizes', type=int, nargs='+', default=[1000, 5000, 10000])
     parser.add_argument('--seeds', type=int, nargs='+', default=list(range(42, 52)))
-    parser.add_argument('--output', type=Path, default=Path('results/inference/rejection_comparison.json'))
+    parser.add_argument('--output', type=Path, default=Path('results/inference/likelihood_comparison.json'))
     args = parser.parse_args()
     model = json.loads(args.model.read_text(encoding='utf-8'))
     queries = json.loads(args.reference.read_text(encoding='utf-8'))['queries']
@@ -91,8 +91,8 @@ def main():
     args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + '\n', encoding='utf-8')
     write_csv(args.output.with_suffix('.csv'), result)
     for row in result['results']:
-        print(f"N={row['sample_count']:5d} accepted={row['mean_accepted_samples']:8.1f} "
-              f"MAE={row['mean_total_variation_distance']:.5f} "
+        print(f"N={row['sample_count']:5d} ESS={row['mean_effective_sample_size']:8.1f} "
+              f"MAE={row['mean_total_variation_distance']} "
               f"runtime={row['mean_runtime_seconds']:.4f}s evidence={row['evidence']}")
 
 

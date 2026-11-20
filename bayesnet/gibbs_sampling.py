@@ -1,4 +1,4 @@
-# Gibbs sampling for discrete Bayesian network posterior inference
+"""Gibbs sampling for discrete Bayesian network posterior inference."""
 import argparse
 import json
 import random

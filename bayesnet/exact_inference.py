@@ -5,7 +5,7 @@ import math
 from functools import lru_cache
 from itertools import product
 from pathlib import Path
-from parameter_learning import load_split
+from .parameter_learning import load_split
 
 def multiply(factors, states):
     scope = tuple(dict.fromkeys(node for names, _ in factors for node in names))
@@ -104,7 +104,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("model", type=Path)
     parser.add_argument("--repo", type=Path, default=Path.cwd())
-    parser.add_argument("--output", type=Path, default=Path("exact_results.json"))
+    parser.add_argument("--output", type=Path, default=Path("results/inference/exact_results.json"))
     args = parser.parse_args()
     model = json.loads(args.model.read_text(encoding="utf-8"))
     train, test = load_split(args.repo)
@@ -121,6 +121,7 @@ def main():
         ],
         "evaluation": evaluate(model, train, test),
     }
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(results, indent=2) + "\n", encoding="utf-8")
 
 if __name__ == "__main__":

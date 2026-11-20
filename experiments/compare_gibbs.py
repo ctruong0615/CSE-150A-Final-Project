@@ -1,4 +1,4 @@
-# Compare Gibbs sampling estimates with exact Bayesian network inference
+"""Compare Gibbs sampling estimates with exact Bayesian network inference"""
 import argparse
 import json
 import math
@@ -6,8 +6,8 @@ import statistics
 import time
 from pathlib import Path
 
-from exact_inference import posterior as exact_posterior
-from gibbs_sampling import sample
+from bayesnet.exact_inference import posterior as exact_posterior
+from bayesnet.gibbs_sampling import sample
 
 SCENARIOS = [
     {},
@@ -31,7 +31,7 @@ def trace_batches(trace, states, batch_count=10):
 
 def compare(model, *, sample_sizes=(1_000, 5_000, 10_000),
             burn_in_periods=(0, 1_000, 5_000), thinning=1,
-            seeds=(42, 43, 44)):
+            seeds=tuple(range(42, 52))):
     # Report Gibbs error, convergence, stability, and runtime vs exact posteriors
     if not seeds or len(seeds) != len(set(seeds)):
         raise ValueError("provide at least one unique random seed")
@@ -88,11 +88,12 @@ def main():
     parser.add_argument("--thinning", type=int, default=1)
     parser.add_argument("--seeds", type=int, nargs="+", default=[42, 43, 44, 45, 46, 47, 48, 49, 50, 51],
                         help="Explicit random seeds to run for every experiment condition")
-    parser.add_argument("--output", type=Path, default=Path("gibbs_comparison.json"))
+    parser.add_argument("--output", type=Path, default=Path("results/inference/gibbs_comparison.json"))
     args = parser.parse_args()
     model = json.loads(args.model.read_text(encoding="utf-8"))
     result = compare(model, sample_sizes=args.sample_sizes, burn_in_periods=args.burn_in_periods,
                      thinning=args.thinning, seeds=args.seeds)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
 
 if __name__ == "__main__":

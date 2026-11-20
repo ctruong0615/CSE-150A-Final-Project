@@ -1,10 +1,10 @@
 """Analytic and exact-inference checks for likelihood weighting."""
 import copy
 import unittest
-from exact_inference import posterior
-from likelihood_weighting import sample
-from rejection_sampling import sample as rejection
-from test_gibbs_sampling import TINY_MODEL, LECTURE_MODEL
+from bayesnet.exact_inference import posterior
+from bayesnet.likelihood_weighting import sample
+from bayesnet.rejection_sampling import sample as rejection
+from tests.test_gibbs_sampling import TINY_MODEL, LECTURE_MODEL
 
 
 class LikelihoodWeightingTests(unittest.TestCase):

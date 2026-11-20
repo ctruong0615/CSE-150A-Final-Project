@@ -2,9 +2,9 @@
 import copy
 import unittest
 
-from exact_inference import posterior
-from rejection_sampling import sample
-from test_gibbs_sampling import TINY_MODEL, LECTURE_MODEL
+from bayesnet.exact_inference import posterior
+from bayesnet.rejection_sampling import sample
+from tests.test_gibbs_sampling import TINY_MODEL, LECTURE_MODEL
 
 
 class RejectionSamplingTests(unittest.TestCase):

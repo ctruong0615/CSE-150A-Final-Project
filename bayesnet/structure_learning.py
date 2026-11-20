@@ -10,7 +10,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import networkx as nx
 
-from preprocess import STATES, split_rows
+from .preprocess import STATES, split_rows
 
 # Parents must occur before their children. This guarantees an acyclic graph.
 NODE_ORDER = ['release_era', 'is_indie', 'is_rpg', 'price_band',
@@ -131,8 +131,8 @@ def draw_network(path, edges, title):
 
 
 def run():
-    root = Path(__file__).resolve().parent
-    train, test = load_data(root / 'cleaned_games.csv')
+    root = Path(__file__).resolve().parents[1]
+    train, test = load_data(root / 'data' / 'cleaned_games.csv')
     learned_edges = learn_structure(train)
     output = root / 'results' / 'structure'
     output.mkdir(parents=True, exist_ok=True)

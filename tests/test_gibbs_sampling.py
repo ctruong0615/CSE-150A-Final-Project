@@ -1,8 +1,8 @@
 """Small Bayesian network checks for Gibbs sampling."""
 import unittest
 
-from exact_inference import posterior as exact_posterior
-from gibbs_sampling import sample
+from bayesnet.exact_inference import posterior as exact_posterior
+from bayesnet.gibbs_sampling import sample
 
 TINY_MODEL = {
     "nodes": ["A", "B"],

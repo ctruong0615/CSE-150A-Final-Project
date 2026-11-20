@@ -3,7 +3,7 @@ import math
 from itertools import combinations
 from pathlib import Path
 
-from structure_learning import local_score, learn_structure, load_data, MANUAL_EDGES, NODE_ORDER
+from bayesnet.structure_learning import local_score, learn_structure, load_data, MANUAL_EDGES, NODE_ORDER
 
 
 def run_checks():
@@ -31,7 +31,7 @@ def run_checks():
         for size in range(position + 1):
             for parents in combinations(list(states)[:position], size):
                 assert local_score(rows, node, parents, states)[2] <= selected_bic + 1e-8
-    train, test = load_data(Path(__file__).resolve().with_name('cleaned_games.csv'))
+    train, test = load_data(Path(__file__).resolve().parents[1] / 'data' / 'cleaned_games.csv')
     assert (len(train), len(test)) == (18244, 4560)
     assert not ({r['app_id'] for r in train} & {r['app_id'] for r in test})
     assert all(NODE_ORDER.index(p) < NODE_ORDER.index(c) for p, c in MANUAL_EDGES)

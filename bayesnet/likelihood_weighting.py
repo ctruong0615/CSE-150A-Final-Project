@@ -9,7 +9,7 @@ import math
 import random
 from pathlib import Path
 
-from rejection_sampling import prepare
+from .rejection_sampling import prepare
 
 
 def sample(model, query, evidence=None, *, samples=10_000, seed=None):
