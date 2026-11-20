@@ -59,7 +59,7 @@ python3 -m experiments.plot_gibbs
 
 This writes `gibbs_comparison.png` (error by sample count and burn-in), `gibbs_convergence.png` (cumulative estimates against exact inference), and `gibbs_runtime.png` under `results/inference/`.
 
-### Experimental analysis
+## Experimental analysis
 
 Run the same four exact-reference queries, sample sizes (1,000, 5,000, and 10,000), and seeds (42-51) through rejection sampling, likelihood weighting, and Gibbs sampling:
 
