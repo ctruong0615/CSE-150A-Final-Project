@@ -43,6 +43,42 @@ The graphs, network diagrams, and comparison table are saved in `results/structu
 - [exact_inference.py](bayesnet/exact_inference.py) computes exact success probabilities by variable elimination. It scored 59.00% accuracy on 4,559 held-out games. One game's evidence had zero probability and was excluded.
 - For rejection sampling, likelihood weighting, and Gibbs sampling, load [trained_network.json](results/inference/trained_network.json) and use the evidence and exact posteriors in the `queries` array of [exact_results.json](results/inference/exact_results.json) for comparison.
 
+## Rejection sampling
+
+- [rejection_sampling.py](bayesnet/rejection_sampling.py) estimates Bayesian network posteriors by generating complete assignments from the trained CPTs in parent-before-child order and retaining only assignments that match the evidence. The posterior is estimated from query-state frequencies among accepted assignments.
+- [compare_rejection.py](experiments/compare_rejection.py) compares estimates of `success` with exact inference on the same trained network and four evidence scenarios in `exact_results.json`. It varies attempted sample counts (1,000, 5,000, and 10,000) across ten seeds (42–51). Results include per-seed estimates, absolute error, total variation distance, runtime, accepted sample counts, and acceptance rates.
+- [test_rejection_sampling.py](tests/test_rejection_sampling.py) checks estimates against analytic probabilities and exact inference on small networks, reproducibility, model validation, and zero-acceptance handling.
+
+Sample counts refer to attempted complete assignments, not accepted assignments. Without evidence, every assignment is accepted. If no assignments match the evidence, the sampler returns no posterior estimate; this does not prove that the evidence is impossible.
+
+Run the tests, comparison experiments, and plotting script from the repository root:
+
+```bash
+python3 -m unittest tests.test_rejection_sampling -v
+python3 -m experiments.compare_rejection results/inference/trained_network.json
+python3 -m experiments.plot_rejection
+```
+
+These commands save `rejection_comparison.json`, `rejection_comparison.csv`, and `rejection_comparison.png` under `results/inference/`. The figure shows approximation error, acceptance rates, and runtime across sample budgets. Plotting requires `matplotlib`.
+
+## Likelihood weighting
+
+- [likelihood_weighting.py](bayesnet/likelihood_weighting.py) estimates Bayesian network posteriors by fixing evidence variables and sampling the remaining variables from their CPTs. Each assignment receives a weight equal to the product of its evidence probabilities, and the posterior is calculated from normalized weighted counts. Log weights prevent numerical underflow.
+- [compare_likelihood.py](experiments/compare_likelihood.py) compares estimates of `success` with exact inference using the same four evidence scenarios, sample counts (1,000, 5,000, and 10,000), and ten seeds (42–51). Results include per-seed estimates, absolute error, total variation distance, runtime, and effective sample size (ESS).
+- [test_likelihood_weighting.py](tests/test_likelihood_weighting.py) checks analytic and exact probabilities, fixed evidence, reproducibility, zero-weight handling, and numerical stability.
+
+ESS measures weight concentration: equal weights give an ESS equal to the sample count, while concentrated weights reduce ESS. Without evidence, all weights are equal and the method reduces to prior sampling. If all weights are zero, the sampler returns no posterior estimate rather than assigning probability zero.
+
+Run the tests, comparison experiments, and plotting script from the repository root:
+
+```bash
+python3 -m unittest tests.test_likelihood_weighting -v
+python3 -m experiments.compare_likelihood results/inference/trained_network.json
+python3 -m experiments.plot_likelihood
+```
+
+These commands save `likelihood_comparison.json`, `likelihood_comparison.csv`, and `likelihood_comparison.png` under `results/inference/`. The plotting script uses the saved rejection comparison results to compare both methods’ approximation errors. Generate the rejection results first. Plotting requires `matplotlib`.
+
 ## Gibbs sampling
 
 - [gibbs_sampling.py](bayesnet/gibbs_sampling.py) estimates Bayesian network posteriors using random-scan Gibbs sampling. Evidence variables stay fixed; each update samples one non-evidence variable from its Markov blanket conditional.
